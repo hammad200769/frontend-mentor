@@ -1,118 +1,172 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  margin: 0;
   background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
   display: flex;
-  max-width: 900px;
-  margin: 50px auto;
+  width: 900px;
+  background-color: white;
   border-radius: 10px;
   overflow: hidden;
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar {
-  width: 270px;
-  background: url("file:///C:/Users/786/Desktop/bg-sidebar-desktop.svg") no-repeat center center;
+  width: 280px;
+  background-image: url("file:///C:/Users/786/Desktop/bg-sidebar-desktop.svg");
   background-size: cover;
-  padding: 30px 20px;
+  padding: 30px;
   color: white;
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-  margin-top: 40px;
 }
 
-.sidebar li {
+.sidebar .step {
+  margin-bottom: 30px;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
-  gap: 15px;
 }
 
-.sidebar .circle {
-  width: 35px;
-  height: 35px;
-  background-color: transparent;
-  border: 1px solid white;
+.sidebar .step span {
+  background: #bee2fd;
+  color: #000;
   border-radius: 50%;
-  display: flex;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  margin-right: 15px;
 }
 
-.sidebar li.active .circle {
-  background-color: #BEE1FF;
-  color: black;
-  border: none;
+.sidebar .active span {
+  background: white;
+  color: #000;
 }
 
-.sidebar li span {
-  font-size: 12px;
-  color: #BEE1FF;
-}
-
-.sidebar li strong {
-  font-size: 14px;
-  color: white;
-}
-
-.form-section {
+.form-content {
   flex: 1;
-  padding: 60px 40px;
+  padding: 40px;
 }
 
-.form-section h2 {
-  margin-top: 0;
-  font-size: 28px;
-  color: #02295A;
+.step-page {
+  display: none;
+  animation: fade 0.3s ease;
 }
 
-.form-section p {
-  margin-bottom: 30px;
-  color: #9699ab;
-}
-
-form label {
+.step-page.active {
   display: block;
+}
+
+h2 {
+  color: #03295a;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #9699ab;
   margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
   font-weight: 500;
-  color: #02295A;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
   width: 100%;
-  padding: 14px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 6px;
-  font-size: 16px;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
 button {
-  margin-top: 20px;
-  background-color: #02295A;
+  background-color: #02295a;
   color: white;
-  padding: 14px 28px;
   border: none;
+  padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  float: right;
 }
 
-button:hover {
-  background-color: #16409b;
+button.back {
+  background-color: transparent;
+  color: #9699ab;
+}
+
+.plans {
+  display: flex;
+  gap: 15px;
+}
+
+.plan {
+  flex: 1;
+  border: 2px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.plan.selected {
+  border-color: #02295a;
+  background-color: #f0f6ff;
+}
+
+.toggle {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.addon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.summary-box {
+  background: #f0f6ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
