@@ -1,15 +1,40 @@
-document.getElementById('infoForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+const steps = document.querySelectorAll(".step-page");
+const sidebarSteps = document.querySelectorAll(".sidebar .step");
+const nextButtons = document.querySelectorAll(".next");
+const backButtons = document.querySelectorAll(".back");
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+let currentStep = 0;
 
-  if (!name || !email || !phone) {
-    alert("Please fill out all fields.");
-    return;
-  }
+function showStep(index) {
+  steps.forEach((step, i) => {
+    step.classList.toggle("active", i === index);
+    sidebarSteps[i].classList.toggle("active", i === index);
+  });
+}
 
-  alert("Proceeding to next step...");
-  // Add navigation logic here
+nextButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  });
 });
+
+backButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+})
+document.querySelectorAll(".plan").forEach((plan) => {
+  plan.addEventListener("click", () => {
+    document.querySelectorAll(".plan").forEach(p => p.classList.remove("selected"));
+    plan.classList.add("selected");
+  });
+});
+
+
+showStep(currentStep);
